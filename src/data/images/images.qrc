@@ -1,0 +1,30 @@
+<RCC>
+  <qresource prefix="main">
+    <file>setting/주방이름.png</file>
+    <file>setting/dropdown_arrow.png</file>
+    <file>setting/_테스트출력.png</file>
+    <file>setting/프린터이름.png</file>
+    <file>setting/프린터이름토글.png</file>
+    <file>setting/date_icon.png</file>
+    <file>setting/miners.png</file>
+    <file>setting/plus.png</file>
+    <file>setting/title1.png</file>
+    <file>setting/title2.png</file>
+    <file>main/기록_checked.png</file>
+    <file>main/설정_checked.png</file>
+    <file>main/기록.png</file>
+    <file>main/설정.png</file>
+    <file>main/픽업.png</file>
+    <file>main/매장식사.png</file>
+    <file>main/품절설정.png</file>
+    <file>main/매장식사_checked.png</file>
+    <file>main/픽업_checked.png</file>
+    <file>main/toggle_off.png</file>
+    <file>main/toggle_on.png</file>
+  </qresource>
+  <qresource prefix="pickup">
+    <file>pickup/orders_blank.png</file>
+    <file>pickup/orders.png</file>
+    <file>pickup/up_down.png</file>
+  </qresource>
+</RCC>
