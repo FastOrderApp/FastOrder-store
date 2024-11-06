@@ -1,0 +1,1729 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1024</width>
+    <height>768</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1024</width>
+    <height>768</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <widget class="QStackedWidget" name="stacked_main">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>160</y>
+      <width>1024</width>
+      <height>599</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Pretendard</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#stacked_main{
+background-color:#F9F9F9;
+border:0px solid #F9F9F9;
+}
+#page_history{
+background-color:#F9F9F9;
+border:0px solid #F9F9F9;
+}
+#page_eat{
+background-color:#F9F9F9;
+border:0px solid #F9F9F9;
+}
+#page_pickup{
+background-color:#F9F9F9;
+border:0px solid #F9F9F9;
+}
+#page_setting{
+background-color:#F9F9F9;
+border:0px solid #F9F9F9;
+}</string>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="page_pickup">
+     <widget class="QPushButton" name="btn_pickup_wait">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>65</x>
+        <y>30</y>
+        <width>150</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Pretendard</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border:2px solid #8D8D8D;
+border-radius:29px;
+color:#8D8D8D;
+}
+QPushButton:disabled{
+border:2px solid black;
+color:white;
+background-color:black;
+}</string>
+      </property>
+      <property name="text">
+       <string>접수대기</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_pickup_processing">
+      <property name="geometry">
+       <rect>
+        <x>224</x>
+        <y>30</y>
+        <width>150</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Pretendard</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border:2px solid #8D8D8D;
+border-radius:29px;
+color:#8D8D8D;
+}
+QPushButton:disabled{
+border:2px solid black;
+color:white;
+background-color:black;
+}</string>
+      </property>
+      <property name="text">
+       <string>제조 중</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_pickup_history">
+      <property name="geometry">
+       <rect>
+        <x>383</x>
+        <y>30</y>
+        <width>150</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Pretendard</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border:2px solid #8D8D8D;
+border-radius:29px;
+color:#8D8D8D;
+}
+QPushButton:disabled{
+border:2px solid black;
+color:white;
+background-color:black;
+}</string>
+      </property>
+      <property name="text">
+       <string>지난 주문 조회</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QWidget" name="pickup_orders" native="true">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>55</x>
+        <y>109</y>
+        <width>812</width>
+        <height>440</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#pickup_orders{
+border-image: url(:/pickup/pickup/orders_blank.png);
+}
+#pickup_orders:disabled{
+border-image: url(:/pickup/pickup/orders.png);
+}
+</string>
+      </property>
+      <layout class="QVBoxLayout" name="lay_pickup_order">
+       <property name="spacing">
+        <number>22</number>
+       </property>
+       <property name="leftMargin">
+        <number>22</number>
+       </property>
+       <property name="topMargin">
+        <number>22</number>
+       </property>
+       <property name="rightMargin">
+        <number>22</number>
+       </property>
+       <property name="bottomMargin">
+        <number>22</number>
+       </property>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="pickup_updown" native="true">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>888</x>
+        <y>109</y>
+        <width>81</width>
+        <height>440</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#pickup_updown{
+border-image: url(:/pickup/pickup/up_down.png);
+}
+QPushButton{
+background-color:rgba(0,0,0,0);}
+QPushButton:disabled{
+background-color:rgba(249,249,249,0.7);}</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>3</number>
+       </property>
+       <property name="leftMargin">
+        <number>4</number>
+       </property>
+       <property name="topMargin">
+        <number>20</number>
+       </property>
+       <property name="rightMargin">
+        <number>4</number>
+       </property>
+       <property name="bottomMargin">
+        <number>20</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="btn_pickup_up">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_pickup_down">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="lab_pickup_page">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>560</y>
+        <width>1024</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Pretendard</family>
+        <pointsize>24</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:#8D8D8D;</string>
+      </property>
+      <property name="text">
+       <string>1/1</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="indent">
+       <number>-1</number>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_eat">
+     <widget class="QWidget" name="eat_orders" native="true">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>55</x>
+        <y>109</y>
+        <width>812</width>
+        <height>440</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#eat_orders{
+border-image: url(:/pickup/pickup/orders_blank.png);
+}
+#eat_orders:disabled{
+border-image: url(:/pickup/pickup/orders.png);
+}
+</string>
+      </property>
+      <layout class="QVBoxLayout" name="lay_eat_order">
+       <property name="spacing">
+        <number>22</number>
+       </property>
+       <property name="leftMargin">
+        <number>22</number>
+       </property>
+       <property name="topMargin">
+        <number>22</number>
+       </property>
+       <property name="rightMargin">
+        <number>22</number>
+       </property>
+       <property name="bottomMargin">
+        <number>22</number>
+       </property>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="eat_updown" native="true">
+      <property name="geometry">
+       <rect>
+        <x>888</x>
+        <y>109</y>
+        <width>81</width>
+        <height>440</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#eat_updown{
+border-image: url(:/pickup/pickup/up_down.png);
+}
+QPushButton{
+background-color:rgba(0,0,0,0);}
+
+QPushButton:disabled{
+background-color:rgba(249,249,249,0.7);}</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="spacing">
+        <number>4</number>
+       </property>
+       <property name="leftMargin">
+        <number>4</number>
+       </property>
+       <property name="topMargin">
+        <number>20</number>
+       </property>
+       <property name="rightMargin">
+        <number>4</number>
+       </property>
+       <property name="bottomMargin">
+        <number>20</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="btn_eat_up">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_eat_down">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="btn_eat_wait">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>65</x>
+        <y>30</y>
+        <width>150</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Pretendard</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border:2px solid #8D8D8D;
+border-radius:29px;
+color:#8D8D8D;
+}
+QPushButton:disabled{
+border:2px solid black;
+color:white;
+background-color:black;
+}</string>
+      </property>
+      <property name="text">
+       <string>접수대기</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_eat_processing">
+      <property name="geometry">
+       <rect>
+        <x>224</x>
+        <y>30</y>
+        <width>150</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Pretendard</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border:2px solid #8D8D8D;
+border-radius:29px;
+color:#8D8D8D;
+}
+QPushButton:disabled{
+border:2px solid black;
+color:white;
+background-color:black;
+}</string>
+      </property>
+      <property name="text">
+       <string>제조 중</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lab_eat_page">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>560</y>
+        <width>1024</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Pretendard</family>
+        <pointsize>24</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:#8D8D8D;</string>
+      </property>
+      <property name="text">
+       <string>1/1</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="indent">
+       <number>-1</number>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_eat_history">
+      <property name="geometry">
+       <rect>
+        <x>383</x>
+        <y>30</y>
+        <width>150</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Pretendard</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border:2px solid #8D8D8D;
+border-radius:29px;
+color:#8D8D8D;
+}
+QPushButton:disabled{
+border:2px solid black;
+color:white;
+background-color:black;
+}</string>
+      </property>
+      <property name="text">
+       <string>지난 주문 조회</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_history">
+     <widget class="QWidget" name="history_set_wid" native="true">
+      <property name="geometry">
+       <rect>
+        <x>55</x>
+        <y>33</y>
+        <width>914</width>
+        <height>105</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#history_set_wid{border-radius: 25px;
+background: rgba(184, 184, 184, 0.40);}
+QRadioButton::indicator {
+    width: 0px; /* indicator 크기 */
+    height: 0px;
+	border:none;
+}
+QRadioButton {
+spacing: 14.5px; /* 텍스트와 라디오버튼 간격 */
+border-radius: 15px;
+border: 1px solid #8D8D8D;
+background: #F9F9F9;
+color:#909090;
+            }
+
+            /* 비활성화된 상태 */
+QRadioButton::checked {
+background: #1B1B1B;
+color:#F9F9F9;
+
+            }
+QPushButton{
+border-radius: 15px;
+border: 1px solid #8D8D8D;
+text-align : left;
+padding:5px;
+padding-left:10px;
+background: #F9F9F9;
+	image: url(:/main/setting/date_icon.png);
+    image-position: right center;
+image-width: 10px; image-height: 10px;
+color:#909090;
+}
+</string>
+      </property>
+      <widget class="QRadioButton" name="history_day">
+       <property name="geometry">
+        <rect>
+         <x>34</x>
+         <y>54</y>
+         <width>52</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Pretendard</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>일간</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="history_month">
+       <property name="geometry">
+        <rect>
+         <x>146</x>
+         <y>54</y>
+         <width>52</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Pretendard</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>월간</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="history_week">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>54</y>
+         <width>52</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Pretendard</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>주간</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>41</x>
+         <y>21</y>
+         <width>211</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Pretendard</family>
+         <pointsize>-1</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: #525252;
+font-family: Pretendard;
+font-size: 20px;
+background-color:none;</string>
+       </property>
+       <property name="text">
+        <string>매출 조회 기간 설정</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="history_range">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>54</y>
+         <width>201</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>2024.01.01 - 2024.06.01</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QCalendarWidget" name="history_clander">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>90</y>
+        <width>481</width>
+        <height>371</height>
+       </rect>
+      </property>
+      <property name="selectionMode">
+       <enum>QCalendarWidget::SingleSelection</enum>
+      </property>
+      <property name="horizontalHeaderFormat">
+       <enum>QCalendarWidget::SingleLetterDayNames</enum>
+      </property>
+      <property name="verticalHeaderFormat">
+       <enum>QCalendarWidget::NoVerticalHeader</enum>
+      </property>
+     </widget>
+     <widget class="QWidget" name="history_main_left" native="true">
+      <property name="geometry">
+       <rect>
+        <x>55</x>
+        <y>158</y>
+        <width>185</width>
+        <height>295</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#history_main_left{
+border:2px solid rgba(178, 178, 178, 1);
+border-right:none;
+border-top-left-radius: 25px;
+border-bottom-left-radius: 25px;
+background: rgba(184, 184, 184, 0.40);
+}
+Line{
+border:2px solid rgba(141, 141, 141, 0.50);
+
+}
+QLabel{
+color:#525252;
+}</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,1,1,1,1">
+       <property name="spacing">
+        <number>8</number>
+       </property>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <property name="spacing">
+          <number>8</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <item alignment="Qt::AlignHCenter">
+          <widget class="QLabel" name="label_5">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Pretendard</family>
+             <pointsize>20</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>완료 주문</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+           </property>
+          </widget>
+         </item>
+         <item alignment="Qt::AlignHCenter">
+          <widget class="QLabel" name="history_count_complete">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Pretendard</family>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>(15건)      </string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="Line" name="line_4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Sunken</enum>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_6">
+         <property name="spacing">
+          <number>8</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <item alignment="Qt::AlignHCenter">
+          <widget class="QLabel" name="label_7">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Pretendard</family>
+             <pointsize>20</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>거절 / 취소</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+           </property>
+          </widget>
+         </item>
+         <item alignment="Qt::AlignHCenter">
+          <widget class="QLabel" name="history_count_cancel">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Pretendard</family>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>(15건)           </string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="Line" name="line_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QLabel" name="label_6">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Pretendard</family>
+           <pointsize>20</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>미정산금</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="history_main_right" native="true">
+      <property name="geometry">
+       <rect>
+        <x>238</x>
+        <y>158</y>
+        <width>732</width>
+        <height>295</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Pretendard</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#history_main_right{
+border:2px solid rgba(178, 178, 178, 1);
+border-left:;
+border-top-right-radius: 25px;
+border-bottom-right-radius: 25px;
+background: rgba(249, 249, 249, 1);
+}
+Line{
+border:2px solid rgba(141, 141, 141, 0.50);
+
+}
+QLabel{
+color:#525252;
+}
+
+QLabel[text='없음']{
+color :rgba(82, 82, 82, 0.5);
+}</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>8</number>
+       </property>
+       <property name="leftMargin">
+        <number>25</number>
+       </property>
+       <property name="rightMargin">
+        <number>25</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="history_price_complete">
+         <property name="font">
+          <font>
+           <family>Pretendard</family>
+           <pointsize>20</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>총 주문  금액  213,000원</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="history_price_cancel">
+         <property name="font">
+          <font>
+           <family>Pretendard</family>
+           <pointsize>20</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>없음</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="history_price_non">
+         <property name="font">
+          <font>
+           <family>Pretendard</family>
+           <pointsize>20</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>없음</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="history_total" native="true">
+      <property name="geometry">
+       <rect>
+        <x>55</x>
+        <y>480</y>
+        <width>914</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#history_total{
+border:2px solid rgba(178, 178, 178, 1);
+border-radius: 25px;
+background: rgba(249, 249, 249, 1);
+}
+QPushButton{
+border-radius: 15px;
+border: 1px solid #8D8D8D;
+text-align : right;
+padding:5px;
+padding-right:22px;
+background: #F9F9F9;
+	image: url(:/main/setting/date_icon.png);
+    image-position: left center;
+
+color:rgba(82, 82, 82, 1);
+}
+
+QLabel{
+color:rgba(82, 82, 82, 1);
+}
+</string>
+      </property>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="geometry">
+        <rect>
+         <x>34</x>
+         <y>20</y>
+         <width>160</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Pretendard</family>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>2024.01.01 </string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="history_total_2">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>25</y>
+         <width>681</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Pretendard</family>
+         <pointsize>20</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>총 주문  금액  213,000원</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_setting">
+     <widget class="QProgressBar" name="setting_sound_bar">
+      <property name="geometry">
+       <rect>
+        <x>252</x>
+        <y>140</y>
+        <width>520</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QProgressBar {
+    border: none;
+    border-radius: 8px;            /* 진행 바 전체의 둥근 모서리 */
+    background-color: rgba(184, 184, 184, 0.8);
+	color:rgba(0,0,0,0);
+
+}
+
+QProgressBar::chunk {
+    background-color: #F55442;
+    border-radius: 8px;             /* 청크의 둥근 모서리 */
+        /* 청크 간의 간격 (옵션) */
+}
+</string>
+      </property>
+      <property name="value">
+       <number>50</number>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="setting_sound_de">
+      <property name="geometry">
+       <rect>
+        <x>197</x>
+        <y>128</y>
+        <width>40</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Pretendard</family>
+        <pointsize>45</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/main/setting/miners.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="setting_sound_in">
+      <property name="geometry">
+       <rect>
+        <x>787</x>
+        <y>128</y>
+        <width>40</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Pretendard</family>
+        <pointsize>45</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/main/setting/plus.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>65</x>
+        <y>30</y>
+        <width>150</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/main/setting/title1.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>65</x>
+        <y>260</y>
+        <width>150</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/main/setting/title2.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="setting_print_drop_1">
+      <property name="geometry">
+       <rect>
+        <x>65</x>
+        <y>323</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Pretendard</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox{
+border:none;
+background-color:rgba(0,0,0,0);
+}
+QComboBox::drop-down:button{
+	background-color: rgba(0,0,0,0);
+	width: 18px;
+}
+QComboBox::down-arrow {
+	border:0px solid none;    
+	image: url(:/main/setting/dropdown_arrow.png);
+}</string>
+      </property>
+      <property name="currentText">
+       <string>프린터 이름</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>프린터 이름</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QPushButton" name="setting_print_test_1">
+      <property name="geometry">
+       <rect>
+        <x>65</x>
+        <y>430</y>
+        <width>129</width>
+        <height>43</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/main/setting/_테스트출력.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="setting_print_name_1">
+      <property name="geometry">
+       <rect>
+        <x>65</x>
+        <y>357</y>
+        <width>341</width>
+        <height>56</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Pretendard</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::ClickFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+border-radius: 15px;
+border: 2px solid rgba(9, 9, 9, 0.45);
+padding-left:20px;
+}
+QLineEdit:focus {
+border-radius: 15px;
+border: 2px solid rgba(9, 9, 9, 0.45);
+outline:0px solid rgba(0,0,0,0);
+}</string>
+      </property>
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
+      <property name="placeholderText">
+       <string>프린터이름을 입력하세요.</string>
+      </property>
+      <property name="cursorMoveStyle">
+       <enum>Qt::LogicalMoveStyle</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>260</y>
+        <width>150</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/main/setting/주방이름.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="setting_print_name_2">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>357</y>
+        <width>341</width>
+        <height>56</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Pretendard</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::ClickFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+border-radius: 15px;
+border: 2px solid rgba(9, 9, 9, 0.45);
+padding-left:20px;
+}
+QLineEdit:focus {
+border-radius: 15px;
+border: 2px solid rgba(9, 9, 9, 0.45);
+outline:0px solid rgba(0,0,0,0);
+}</string>
+      </property>
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
+      <property name="placeholderText">
+       <string>프린터이름을 입력하세요.</string>
+      </property>
+      <property name="cursorMoveStyle">
+       <enum>Qt::LogicalMoveStyle</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="setting_print_test_2">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>430</y>
+        <width>129</width>
+        <height>43</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/main/setting/_테스트출력.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="setting_print_drop_2">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>323</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Pretendard</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox{
+border:none;
+background-color:rgba(0,0,0,0);
+}
+QComboBox::drop-down:button{
+	background-color: rgba(0,0,0,0);
+	width: 18px;
+}
+QComboBox::down-arrow {
+	border:0px solid none;    
+	image: url(:/main/setting/dropdown_arrow.png);
+}</string>
+      </property>
+      <property name="currentText">
+       <string>프린터 이름</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>프린터 이름</string>
+       </property>
+      </item>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="main" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1024</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <widget class="QLabel" name="store_name">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>50</y>
+       <width>241</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <family>Pretendard</family>
+       <pointsize>36</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;</string>
+     </property>
+     <property name="text">
+      <string>여기는 가게 이름이 들어갈 곳</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="dragarea">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>1024</width>
+       <height>159</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:#323232;
+border:0px solid #323232;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_minimum">
+     <property name="geometry">
+      <rect>
+       <x>940</x>
+       <y>6</y>
+       <width>81</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Pretendard</family>
+       <pointsize>60</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border:2px solid rgba(0,0,0,0);
+border-radius:29px;
+color:#8D8D8D;
+}</string>
+     </property>
+     <property name="text">
+      <string>-</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_eat">
+     <property name="geometry">
+      <rect>
+       <x>597</x>
+       <y>40</y>
+       <width>155</width>
+       <height>120</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#btn_eat:disabled{
+border-image: url(:/main/main/매장식사_checked.png);
+margin-bottom:0px;
+border:none;
+}
+#btn_eat{
+border-image: url(:/main/main/매장식사.png);
+border:none;
+margin-bottom:1px;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_soldout">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>51</y>
+       <width>91</width>
+       <height>42</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/main/main/품절설정.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="store_subname">
+     <property name="geometry">
+      <rect>
+       <x>46</x>
+       <y>99</y>
+       <width>231</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Pretendard</family>
+       <pointsize>24</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;</string>
+     </property>
+     <property name="text">
+      <string>(여기는 서브 가게이름)</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_switch">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>101</y>
+       <width>91</width>
+       <height>42</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#btn_switch::checked{
+border-image: url(:/main/main/toggle_on.png);
+}#btn_switch{
+border-image: url(:/main/main/toggle_off.png);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_pickup">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>433</x>
+       <y>40</y>
+       <width>155</width>
+       <height>120</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#btn_pickup:disabled{
+border-image: url(:/main/main/픽업_checked.png);
+margin-bottom:0px;
+
+}
+#btn_pickup{
+border-image: url(:/main/main/픽업.png);
+margin-bottom:1px;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_history">
+     <property name="geometry">
+      <rect>
+       <x>771</x>
+       <y>74</y>
+       <width>97</width>
+       <height>86</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#btn_history:disabled{
+border-image: url(:/main/main/기록_checked.png);
+border:none;
+margin-bottom:0px;
+}
+#btn_history{
+border-image: url(:/main/main/기록.png);
+border:none;
+margin-bottom:1px;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_setting">
+     <property name="geometry">
+      <rect>
+       <x>880</x>
+       <y>74</y>
+       <width>97</width>
+       <height>86</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#btn_setting:disabled{
+border-image: url(:/main/main/설정_checked.png);
+border:none;
+margin-bottom:0px;
+}
+#btn_setting{
+border-image: url(:/main/main/설정.png);
+border:none;
+margin-bottom:1px;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <zorder>dragarea</zorder>
+    <zorder>store_name</zorder>
+    <zorder>btn_minimum</zorder>
+    <zorder>btn_eat</zorder>
+    <zorder>btn_soldout</zorder>
+    <zorder>store_subname</zorder>
+    <zorder>btn_switch</zorder>
+    <zorder>btn_pickup</zorder>
+    <zorder>btn_history</zorder>
+    <zorder>btn_setting</zorder>
+   </widget>
+   <zorder>main</zorder>
+   <zorder>stacked_main</zorder>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../images/images.qrc"/>
+ </resources>
+ <connections/>
+</ui>
